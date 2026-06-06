@@ -27,10 +27,11 @@ class Enemy:
 enemy = Enemy(0, 300)
 
 
-
+wave = 1
 money = 100
 tower_damage = 20
 tower_cooldown = 0
+
 
 
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -59,6 +60,9 @@ while running:
 
     money_text = font.render(f"Money: ${money}", True, (255, 255, 255))
     screen.blit(money_text, (10, 10))
+
+    wave_text = font.render(f"Wave: {wave}", True, (255, 255, 255))
+    screen.blit(wave_text, (10, 50))
     
     
 
@@ -112,6 +116,7 @@ while running:
 
     if enemy.is_dead():
         money += 10
+        wave += 1
 
         enemy = Enemy(0, 300)
         enemy_y = 300
