@@ -24,7 +24,10 @@ class Enemy:
         return self.hp <= 0
     
     
-enemy = Enemy(0, 300)
+enemies = [
+    Enemy(0, 300),
+    
+]
 
 
 wave = 1
@@ -82,11 +85,12 @@ while running:
     
     
     
-    enemy_rect = pygame.Rect(
-    enemy.x,
-    enemy.y,
-    enemy.width,
-    enemy.height
+    for enemy in enemies:
+        enemy_rect = pygame.Rect(
+            enemy.x,
+            enemy.y,
+            enemy.width,
+            enemy.height
 )
     pygame.draw.rect(screen, (255, 0, 0), enemy_rect)
     pygame.draw.rect(screen, (255, 0, 0),
@@ -118,8 +122,9 @@ while running:
         money += 10
         wave += 1
 
-        enemy = Enemy(0, 300)
-        enemy_y = 300
+        enemy.hp = enemy.max_hp
+        enemy.x = 0
+        enemy.y = 300
         current_point = 1
 
     
